@@ -52,6 +52,11 @@
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
+              },
+              {
+                "glob": "favicon.svg",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -126,6 +131,11 @@
               },
               {
                 "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "favicon.svg",
                 "input": "src",
                 "output": "/"
               }
