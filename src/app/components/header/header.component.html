@@ -1,19 +1,31 @@
-<header class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-900 shadow-sm transition-colors duration-300">
-  <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
-    
+<header
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+  [class.bg-navy-900]="isScrolled()"
+  [class.bg-transparent]="!isScrolled()"
+  [class.border-b]="isScrolled()"
+  [class.border-gray-800]="isScrolled()"
+  [class.backdrop-blur-md]="isScrolled()"
+>
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+
     <!-- Logo -->
-    <a href="#home" class="text-xl font-bold text-gray-900 dark:text-white">
-      Portfólio
+    <a href="#hero" (click)="scrollToSection('hero', $event)" class="font-mono text-lg font-bold">
+      <span class="text-primary-400">&lt;</span>
+      <span class="text-gray-200">VT</span>
+      <span class="text-primary-400">/&gt;</span>
     </a>
 
     <!-- Menu Desktop -->
     <div class="flex items-center gap-6">
-      <ul class="hidden md:flex gap-8 font-medium">
+      <ul class="hidden md:flex gap-1">
         <li *ngFor="let item of navItems()">
-          <a 
+          <a
             [href]="item.href"
             (click)="scrollToSection(item.id, $event)"
-            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+            [ngClass]="activeSection() === item.id
+              ? 'text-primary-400 bg-primary-500/10'
+              : 'text-gray-400 hover:text-primary-400 hover:bg-gray-800'"
           >
             {{ item.label }}
           </a>
@@ -21,40 +33,44 @@
       </ul>
 
       <!-- Controles -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
 
         <!-- Idioma -->
-        <button 
+        <button
           (click)="toggleLanguage()"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          class="p-2 rounded-lg text-sm text-gray-400 hover:text-primary-400 hover:bg-gray-800 transition-all font-mono"
           [title]="currentLanguage() === 'pt' ? 'Switch to English' : 'Mudar para Português'"
         >
-          {{ currentLanguage() === 'pt' ? '🇧🇷' : '🇺🇸' }}
+          {{ currentLanguage() === 'pt' ? '🇧🇷 PT' : '🇺🇸 EN' }}
         </button>
 
         <!-- Tema -->
-        <button 
+        <button
           (click)="toggleTheme()"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          class="p-2 rounded-lg text-gray-400 hover:text-primary-400 hover:bg-gray-800 transition-all"
           [title]="isDark() ? translations().theme.light : translations().theme.dark"
         >
           @if (isDark()) {
-            <span class="text-yellow-400">☀️</span>
+            <span title="Modo Claro">☀️</span>
           } @else {
-            <span class="text-gray-700">🌙</span>
+            <span title="Modo Escuro">🌙</span>
           }
         </button>
 
-        <!-- Mobile -->
-        <button 
-          class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" 
-          (click)="toggleMobile()" 
+        <!-- Mobile hamburger -->
+        <button
+          class="md:hidden p-2 rounded-lg text-gray-400 hover:text-primary-400 hover:bg-gray-800 transition-all"
+          (click)="toggleMobile()"
           [attr.aria-label]="translations().menu"
         >
           @if (mobileOpen()) {
-            <span class="text-xl">✕</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
           } @else {
-            <span class="text-xl">☰</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
           }
         </button>
       </div>
@@ -63,13 +79,13 @@
 
   <!-- Menu Mobile -->
   @if (mobileOpen()) {
-    <div class="md:hidden bg-white dark:bg-gray-900 shadow-md transition-colors duration-300">
-      <ul class="flex flex-col p-4 gap-4">
+    <div class="md:hidden bg-navy-900/95 backdrop-blur-md border-t border-gray-800">
+      <ul class="flex flex-col p-4 gap-1">
         <li *ngFor="let item of navItems()">
-          <a 
+          <a
             [href]="item.href"
             (click)="scrollToSection(item.id, $event)"
-            class="block py-2 px-4 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            class="block py-3 px-4 text-gray-300 hover:text-primary-400 hover:bg-gray-800 rounded-lg transition-all font-medium"
           >
             {{ item.label }}
           </a>

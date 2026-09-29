@@ -56,6 +56,35 @@ export class EducationComponent {
               'Agile Project Management',
               'Cloud Computing'
             ]
+      },
+      {
+        institution: lang === 'pt'
+          ? 'IBMEC'
+          : 'IBMEC',
+        degree: lang === 'pt'
+          ? 'Gestão de Projetos com IA'
+          : 'Project Management with AI',
+        period: '2026 - 2027',
+        description: lang === 'pt'
+          ? 'Pós-graduação em Gestão de Projetos com foco em Inteligência Artificial aplicada ao planejamento, execução e monitoramento de projetos de tecnologia e inovação.'
+          : 'Postgraduate degree in Project Management with a focus on Artificial Intelligence applied to planning, execution and monitoring of technology and innovation projects.',
+        skills: lang === 'pt'
+          ? [
+              'Gestão de Projetos com IA',
+              'Planejamento Estratégico',
+              'Liderança de Equipes',
+              'Machine Learning aplicado',
+              'Análise de Dados',
+              'Inovação e Transformação Digital'
+            ]
+          : [
+              'AI-driven Project Management',
+              'Strategic Planning',
+              'Team Leadership',
+              'Applied Machine Learning',
+              'Data Analysis',
+              'Innovation and Digital Transformation'
+            ]
       }
     ];
   });
@@ -70,7 +99,7 @@ export class EducationComponent {
           : 'Database Administrator',
         issuer: 'SENAC',
         date: '2023',
-        credentialUrl: '#'
+        credentialUrl: ''
       },
       {
         title: lang === 'pt'
@@ -78,13 +107,13 @@ export class EducationComponent {
           : 'Web Programmer',
         issuer: 'SENAC',
         date: '2023',
-        credentialUrl: '#'
+        credentialUrl: ''
       },
       {
         title: 'MySQL Explorer',
         issuer: 'Oracle',
         date: '2023',
-        credentialUrl: '#'
+        credentialUrl: ''
       },
       {
         title: lang === 'pt'
@@ -92,7 +121,7 @@ export class EducationComponent {
           : 'ADAPTA Mentorship with AI',
         issuer: 'ADAPTA Company',
         date: '2025',
-        credentialUrl: '#'
+        credentialUrl: ''
       },
       {
         title: lang === 'pt'
@@ -100,7 +129,7 @@ export class EducationComponent {
           : 'Web Development with GO',
         issuer: 'Udemy',
         date: '2026',
-        credentialUrl: '#'
+        credentialUrl: ''
       }
     ];
   });

@@ -1,174 +1,81 @@
-# Portfolio Profissional Angular
+# Vitor Tenorio — Portfolio
 
-Portfolio pessoal moderno e responsivo construído com Angular 17+, TypeScript e Tailwind CSS.
+Portfólio pessoal desenvolvido com **Angular 17** e **Tailwind CSS**, com design dark-tech inspirado na identidade de desenvolvedor full stack e gerente de projetos.
 
-## 🚀 Tecnologias
+## Stack
 
-- **Angular 17+** - Framework principal
-- **TypeScript** - Linguagem de programação
-- **Tailwind CSS** - Framework de estilização
-- **Angular Animations** - Animações suaves
+- **Framework**: Angular 17 (standalone components, signals)
+- **Estilo**: Tailwind CSS v3 com design system customizado
+- **Tema**: Dark mode como padrão, com toggle para light mode
+- **i18n**: Internacionalização PT 🇧🇷 / EN 🇺🇸 via `TranslationService`
+- **SSR**: Angular Universal (`server.ts`)
+- **Deploy**: GitHub Pages
 
-## 📋 Pré-requisitos
+## Seções
 
-- Node.js (v18 ou superior)
-- npm ou yarn
-- Angular CLI (`npm install -g @angular/cli`)
+| Seção | Descrição |
+|-------|-----------|
+| **Hero** | Apresentação com code snippet decorativo interativo |
+| **About** | Bio, foto e estatísticas de carreira |
+| **Skills** | Habilidades por categoria (Frontend, Backend, DevOps, Tools) |
+| **Projects** | Projetos em destaque com links para demo/código |
+| **Education** | Formações acadêmicas, certificações e idiomas |
+| **Experience** | Timeline de experiência profissional |
+| **Cases** | Casos reais de problemas resolvidos (desafio → solução → impacto) |
 
-## 🔧 Instalação
+## Estrutura
 
-1. Clone o repositório:
-```bash
-git clone 
-cd portfolio-angular
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── header/        # Navbar com scroll detection e active section
+│   │   ├── hero/          # Seção principal com code snippet
+│   │   ├── about/         # Bio e estatísticas
+│   │   ├── skills/        # Grid de tecnologias por categoria
+│   │   ├── projects/      # Cards de projetos
+│   │   ├── education/     # Formações, certificações e idiomas
+│   │   ├── professions/   # Timeline de experiência
+│   │   ├── problems/      # Cases: problema → solução → impacto
+│   │   └── footer/        # Rodapé com links
+│   ├── services/
+│   │   ├── portfolio.service.ts    # Dados centralizados (skills, projetos, etc.)
+│   │   ├── translation.service.ts  # i18n PT/EN com Angular signals
+│   │   └── theme.service.ts        # Toggle dark/light mode
+│   └── models/            # Interfaces TypeScript
+├── assets/
+│   ├── cv.pdf
+│   ├── icons/             # SVGs das tecnologias
+│   └── images/            # Imagens dos projetos
+└── styles.css             # Design system global
 ```
 
-2. Instale as dependências:
+## Design System
+
+- **Primária**: Cyan neon (`#06b6d4`)
+- **Secundária**: Laranja (`#f97316`)
+- **Background**: Navy deep (`#0a0f1e`)
+- **Tipografia**: Inter (corpo), Poppins (títulos), Fira Code (mono/código)
+- **Efeitos**: Neon glow, grid pattern, glassmorphism, float animation
+
+## Desenvolvimento local
+
 ```bash
 npm install
-```
-
-3. Configure o Tailwind CSS:
-```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init
-```
-
-## 🎨 Personalização
-
-### 1. Dados Pessoais
-
-- **Informações pessoais**
-- **Habilidades**
-- **Projetos**
-- **Redes sociais**
-
-### 2. Imagens
-
-
-### 3. Cores e Tema
-
-
-## 🏃 Executar Localmente
-
-```bash
 ng serve
 ```
 
-Acesse `http://localhost:4200`
+Acesse: `http://localhost:4200`
 
-## 🏗️ Build para Produção
+## Build
 
 ```bash
 ng build --configuration production
 ```
 
-Os arquivos estarão em `dist/`
+## Contato
 
-## 🚀 Deploy
-
-### Vercel
-```bash
-npm install -g vercel
-vercel
-```
-
-### Netlify
-```bash
-npm install -g netlify-cli
-netlify deploy --prod
-```
-
-### GitHub Pages
-```bash
-ng build --configuration production --base-href "/seu-repo/"
-npx angular-cli-ghpages --dir=dist/portfolio-angular/browser
-```
-
-## 📁 Estrutura do Projeto
-
-```
-├── src/
-│    ├── app/
-│    │   ├── components/
-│    │   │   ├── header/
-│    │   │        ├── header.component.html
-│    │   │        └── header.component.ts
-│    │   │   ├── hero/
-│    │   │        └── hero.component.html
-│    │   │        └── hero.component.ts
-│    │   │   ├── about/
-│    │   │        └── about.component.html
-│    │   │        └── about.component.ts
-│    │   │   ├── skills/
-│    │   │        └── skills.component.html
-│    │   │        └── skills.component.ts
-│    │   │   ├── projects/
-│    │   │        └── projects.component.ts
-│    │   │   ├── professions/
-│    │   │        └── professions.component.html
-│    │   │        └── professions.component.ts
-│    │   │   ├── education/
-│    │   │        └── education.component.html
-│    │   │        └── education.component.ts
-│    │   │   └── footer/
-│    │   │        └── footer.component.html
-│    │   │        └── footer.component.ts
-│    │   └── app.routes.ts
-│    ├── directives/
-│    │   └── fade-in.directive.ts
-│    ├── models/
-│    │   ├── portfolio.model.ts
-│    │   ├── project.model.ts
-│    │   ├── skills.model.ts
-│    │   └── social.model.ts
-│    ├── services/
-│    │   └── portfolio.service.ts
-│    │   └── theme.service.ts
-│    │   └── translation.service.ts
-│    ├── app.component.html
-│    ├── app.component.css
-│    ├── app.component.ts
-│    ├── app.config.server.ts
-│    ├── app.routes.ts
-│    └── app.config.ts
-├── assets/
-│  ├── icons/
-│  ├── images/
-├── 404.html
-├── index.html
-├── README.md
-├── main.server.ts
-├── main.ts
-├── server.ts
-├── .editorconfig
-├── .gitignore
-├── angular.json
-├── package-lock.json
-├── package.json
-├── tailwind.config.js
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.spec.json
-└── styles.css
-```
-
-## 🎯 Funcionalidades
-
-- ✅ Design responsivo (mobile-first)
-- ✅ Navegação suave entre seções
-- ✅ Animações ao scroll
-- ✅ Menu mobile
-- ✅ Cards de projetos interativos
-- ✅ Grid de habilidades
-- ✅ Formulário de contato
-- ✅ Links para redes sociais
-- ✅ SEO otimizado
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
-
----
-
-Desenvolvido usando Angular + Tailwind CSS
+- **GitHub**: [VitorTenorio14](https://github.com/VitorTenorio14)
+- **LinkedIn**: [vitor-tenorio](https://www.linkedin.com/in/vitor-tenorio-7baba5276/)
+- **Email**: vitortenorio14@hotmail.com
+- **WhatsApp**: +55 (61) 99666-7222

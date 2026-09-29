@@ -47,6 +47,10 @@ export class FooterComponent {
     this.getLang() === 'pt' ? 'Experiência' : 'Experience'
   );
 
+  casesLabel = computed(() =>
+    this.getLang() === 'pt' ? 'Cases' : 'Cases'
+  );
+
   rightsLabel = computed(() =>
     this.getLang() === 'pt'
       ? 'Todos os direitos reservados'

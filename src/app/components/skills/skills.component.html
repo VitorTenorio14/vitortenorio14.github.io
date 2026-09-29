@@ -1,52 +1,64 @@
-<section id="skills" class="py-24 px-4 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+<section id="skills" class="py-24 px-6 bg-navy-900 relative">
+
   <div class="max-w-6xl mx-auto">
 
-    <h2 class="text-3xl font-bold text-center mb-16 text-gray-900 dark:text-white">
-      {{ translations?.skills?.title || 'Habilidades' }}
-    </h2>
+    <!-- Título -->
+    <div class="text-center mb-16">
+      <span class="font-mono text-primary-400 text-sm">// skills.map()</span>
+      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white">
+        {{ translations.skills.title }}
+      </h2>
+      <div class="neon-line mt-6 max-w-xs mx-auto"></div>
+    </div>
 
     <ng-container *ngIf="skillsByCategory$ | async as skillsMap">
-
-      <div class="space-y-16">
+      <div class="space-y-14">
 
         <div *ngFor="let category of categories; trackBy: trackByCategory">
-          <h3 class="text-xl font-semibold mb-6 text-indigo-600 dark:text-indigo-400">
-            {{ getCategoryLabel(category) }}
-          </h3>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <!-- Título da categoria -->
+          <div class="flex items-center gap-4 mb-6">
+            <h3 class="text-sm font-mono font-semibold text-primary-400 uppercase tracking-widest">
+              {{ getCategoryLabel(category) }}
+            </h3>
+            <div class="flex-1 h-px bg-gradient-to-r from-primary-500/30 to-transparent"></div>
+          </div>
+
+          <!-- Grid de skills -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
 
             <div
               *ngFor="let skill of skillsMap.get(category) ?? []; trackBy: trackByName"
-              class="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 text-center group hover:scale-105 hover:-translate-y-1"
+              class="group relative bg-navy-800 rounded-xl p-4 border border-gray-800 text-center
+                     hover:border-primary-500/50 hover:shadow-glow-card-hover hover:-translate-y-1
+                     transition-all duration-300 cursor-default"
             >
-              <!-- Container do ícone -->
-              <div class="flex justify-center mb-3 sm:mb-4">
-                <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center relative">
-                  <!-- Ícone SVG -->
-                  <img 
-                    [src]="getIconPath(skill.icon)" 
+              <!-- Glow no hover -->
+              <div class="absolute inset-0 rounded-xl bg-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+              <!-- Ícone -->
+              <div class="flex justify-center mb-3 relative z-10">
+                <div class="w-12 h-12 flex items-center justify-center">
+                  <img
+                    [src]="getIconPath(skill.icon)"
                     [alt]="skill.name + ' icon'"
                     loading="lazy"
                     class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                     (error)="onImageError($event, skill.icon)"
                   />
-                  
                 </div>
               </div>
 
-              <!-- Nome da skill -->
-              <span class="font-medium text-gray-800 dark:text-gray-200 block mb-2">
+              <!-- Nome -->
+              <span class="relative z-10 text-xs font-medium text-gray-400 group-hover:text-primary-300 transition-colors block">
                 {{ skill.name }}
               </span>
-
             </div>
 
           </div>
         </div>
 
       </div>
-
     </ng-container>
   </div>
 </section>

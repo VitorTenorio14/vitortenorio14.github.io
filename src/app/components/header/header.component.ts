@@ -36,7 +36,8 @@ export class HeaderComponent {
       { id: 'skills', label: 'Skills', href: '#skills' },
       { id: 'projects', label: lang === 'pt' ? 'Projetos' : 'Projects', href: '#projects' },
       { id: 'education', label: lang === 'pt' ? 'Formações' : 'Education', href: '#education' },
-      { id: 'professions', label: lang === 'pt' ? 'Experiência' : 'Experience', href: '#professions' }
+      { id: 'professions', label: lang === 'pt' ? 'Experiência' : 'Experience', href: '#professions' },
+      { id: 'problems',   label: lang === 'pt' ? 'Cases' : 'Cases',          href: '#problems' }
     ];
   });
 

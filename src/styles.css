@@ -1,40 +1,28 @@
-/* 1. TODOS OS @import DEVEM VIR PRIMEIRO - absolutamente primeiro! */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+/* 1. IMPORTS — devem vir primeiro */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
 
-/* 2. DEPOIS as diretivas do Tailwind */
+/* 2. Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 3. DEPOIS seus estilos customizados */
+/* 3. Estilos customizados */
 @layer base {
   html {
     @apply scroll-smooth;
+    color-scheme: dark;
   }
-  
+
   body {
-    @apply bg-white text-dark-800 font-sans antialiased;
-    @apply min-h-screen;
+    @apply bg-navy-900 text-gray-100 font-sans antialiased min-h-screen;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold;
   }
-  
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
-  }
-  
-  h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
-  }
-  
-  h3 {
-    @apply text-2xl md:text-3xl;
-  }
-  
+
   section {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-16 md:py-24;
   }
 }
 
@@ -43,164 +31,138 @@
   .btn {
     @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium;
     @apply transition-all duration-200 ease-in-out;
-    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-navy-900;
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
   }
-  
-  .btn-primary {
-    @apply btn bg-primary-600 text-white;
-    @apply hover:bg-primary-700 hover:shadow-lg;
+
+  .btn-neon-cyan {
+    @apply btn border border-primary-500 text-primary-400 bg-primary-500/10;
+    @apply hover:bg-primary-500/20 hover:shadow-neon-cyan hover:text-primary-300;
     @apply focus:ring-primary-500;
   }
-  
-  .btn-secondary {
-    @apply btn bg-secondary-600 text-white;
-    @apply hover:bg-secondary-700 hover:shadow-lg;
+
+  .btn-neon-orange {
+    @apply btn border border-secondary-500 text-secondary-400 bg-secondary-500/10;
+    @apply hover:bg-secondary-500/20 hover:shadow-neon-orange hover:text-secondary-300;
     @apply focus:ring-secondary-500;
   }
-  
-  .btn-outline {
-    @apply btn border-2 border-primary-600 text-primary-600;
-    @apply hover:bg-primary-50;
+
+  .btn-solid-cyan {
+    @apply btn bg-primary-500 text-white;
+    @apply hover:bg-primary-400 hover:shadow-neon-cyan;
     @apply focus:ring-primary-500;
   }
-  
-  .btn-ghost {
-    @apply btn text-dark-700;
-    @apply hover:bg-dark-100;
-    @apply focus:ring-dark-400;
-  }
-  
-  /* Cards */
-  .card {
-    @apply bg-white rounded-2xl shadow-soft overflow-hidden;
+
+  /* Cards dark com glow */
+  .card-dark {
+    @apply bg-navy-800 rounded-xl border border-gray-800;
     @apply transition-all duration-300;
   }
-  
-  .card-hover {
-    @apply card hover:shadow-soft-lg hover:-translate-y-1;
+
+  .card-dark-hover {
+    @apply card-dark hover:border-primary-500/40 hover:shadow-glow-card-hover hover:-translate-y-1;
   }
-  
-  /* Inputs */
-  .input {
-    @apply w-full px-4 py-3 rounded-lg border border-dark-300;
-    @apply bg-white text-dark-800;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
-    @apply transition-all duration-200;
-    @apply placeholder:text-dark-400;
+
+  /* Glow border */
+  .glow-border {
+    @apply border border-primary-500/20 shadow-glow-card;
   }
-  
-  .textarea {
-    @apply input resize-none;
+
+  /* Section title neon */
+  .section-title-neon {
+    @apply text-3xl md:text-4xl font-bold text-center mb-4;
+    @apply bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent;
   }
-  
-  /* Section Title */
-  .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12;
-    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+
+  /* Code block decorativo */
+  .code-block {
+    @apply font-mono text-sm rounded-xl border border-primary-500/20 bg-navy-800/80 backdrop-blur-sm;
+    @apply shadow-glow-card;
   }
-  
+
+  /* Badge neon */
+  .badge-cyan {
+    @apply px-3 py-1 text-xs font-mono rounded-md border border-primary-500/40 text-primary-400 bg-primary-500/10;
+  }
+
+  .badge-orange {
+    @apply px-3 py-1 text-xs font-mono rounded-md border border-secondary-500/40 text-secondary-400 bg-secondary-500/10;
+  }
+
+  /* Tag de tecnologia */
+  .tech-tag {
+    @apply px-3 py-1.5 text-sm rounded-lg border border-gray-700 text-gray-300 bg-gray-800/60;
+    @apply transition-colors hover:border-primary-500/50 hover:text-primary-400;
+  }
+
   /* Container */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
-  /* Link hover effect */
-  .link-hover {
-    @apply relative;
-  }
-  
-  .link-hover::after {
-    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5;
-    @apply bg-gradient-to-r from-primary-600 to-secondary-600;
-    @apply transition-all duration-300;
-  }
-  
-  .link-hover:hover::after {
-    @apply w-full;
-  }
-  
+
   /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  .gradient-text-cyan {
+    @apply bg-gradient-to-r from-primary-400 to-primary-200 bg-clip-text text-transparent;
   }
-  
-  /* Badge */
-  .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+
+  .gradient-text-mixed {
+    @apply bg-gradient-to-r from-primary-400 via-purple-400 to-secondary-400 bg-clip-text text-transparent;
   }
-  
-  .badge-primary {
-    @apply badge bg-primary-100 text-primary-700;
-  }
-  
-  .badge-secondary {
-    @apply badge bg-secondary-100 text-secondary-700;
+
+  /* Linha decorativa neon */
+  .neon-line {
+    @apply h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent;
   }
 }
 
 @layer utilities {
-  /* Scrollbar styles */
+  /* Background grid */
+  .bg-grid {
+    background-image: linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Glow text */
+  .text-glow-cyan {
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+
+  .text-glow-orange {
+    text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+  }
+
+  /* Scrollbar */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
-  /* Custom scrollbar */
+
   .scrollbar-custom::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
   }
-  
+
   .scrollbar-custom::-webkit-scrollbar-track {
-    @apply bg-dark-100 rounded-full;
+    @apply bg-navy-800;
   }
-  
+
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    @apply bg-primary-400 rounded-full;
+    @apply bg-primary-600 rounded-full;
   }
-  
-  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary-500;
-  }
-  
+
   /* Animation delays */
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-  
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-  
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-  
-  /* Glassmorphism */
-  .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20;
-  }
-  
-  /* Text shadow */
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .text-shadow-lg {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
 }
 
-/* Animations for scroll - FORA DOS LAYERS */
+/* Animations fora de layers */
 .fade-in {
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
@@ -210,38 +172,176 @@
   opacity: 1;
 }
 
-/* Loading spinner */
-.spinner {
-  border: 3px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #0ea5e9;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { transform: rotate(360deg); }
 }
 
 /* Selection */
 ::selection {
-  @apply bg-primary-200 text-primary-900;
+  background: rgba(6, 182, 212, 0.3);
+  color: #ffffff;
 }
 
-::-moz-selection {
-  @apply bg-primary-200 text-primary-900;
+/* Scrollbar global */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0f1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0891b2;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   Applied when <html> has class="light" (via ThemeService)
+   Uses higher specificity (html.light + class) to win over
+   Tailwind utility classes.
+   ============================================================ */
+
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Navy background overrides */
+html.light .bg-navy-900  { background-color: #f1f5f9 !important; }
+html.light .bg-navy-800  { background-color: #ffffff !important; }
+html.light .bg-navy-700  { background-color: #f8fafc !important; }
+html.light .bg-navy-600  { background-color: #e2e8f0 !important; }
+html.light .bg-gray-800  { background-color: #f1f5f9 !important; }
+html.light .bg-gray-900  { background-color: #e8eef5 !important; }
+html.light .bg-gray-950  { background-color: #dde6ef !important; }
+
+/* Text overrides */
+html.light .text-white   { color: #0f172a !important; }
+html.light .text-gray-100 { color: #0f172a !important; }
+html.light .text-gray-200 { color: #1e293b !important; }
+html.light .text-gray-300 { color: #334155 !important; }
+html.light .text-gray-400 { color: #475569 !important; }
+html.light .text-gray-500 { color: #64748b !important; }
+html.light .text-gray-600 { color: #94a3b8 !important; }
+html.light .text-gray-700 { color: #94a3b8 !important; }
+html.light .text-gray-800 { color: #94a3b8 !important; }
+
+/* Border overrides */
+html.light .border-gray-800 { border-color: #e2e8f0 !important; }
+html.light .border-gray-700 { border-color: #cbd5e1 !important; }
+html.light .border-gray-600 { border-color: #cbd5e1 !important; }
+html.light .border-gray-900 { border-color: #dde6ef !important; }
+
+/* Card component overrides */
+html.light .card-dark    { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
+
+/* Tech tag overrides */
+html.light .tech-tag {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+html.light .tech-tag:hover {
+  border-color: rgba(6,182,212,0.5) !important;
+  color: #0891b2 !important;
+}
+
+/* Scrollbar in light mode */
+html.light ::-webkit-scrollbar-track { background: #f1f5f9; }
+html.light ::-webkit-scrollbar-thumb { background: #0891b2; }
+
+/* Neon/glow effects — desativados no modo claro */
+html.light .text-glow-cyan  { text-shadow: none !important; }
+html.light .text-glow-orange { text-shadow: none !important; }
+
+/* Sombras neon → sombras sutis */
+html.light [class*="shadow-neon-"] { box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; }
+html.light [class*="shadow-glow-"] { box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; }
+html.light .hover\:shadow-neon-cyan:hover   { box-shadow: 0 4px 12px rgba(6,182,212,0.25) !important; }
+html.light .hover\:shadow-neon-orange:hover { box-shadow: 0 4px 12px rgba(249,115,22,0.25) !important; }
+html.light .hover\:shadow-glow-card-hover:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important; }
+
+/* Blobs decorativos do hero — reduzir opacidade */
+html.light .blur-3xl { opacity: 0.12 !important; }
+html.light .blur-2xl { opacity: 0.12 !important; }
+
+/* Animação neonPulse — remove no modo claro */
+html.light [class*="animate-neon"] { animation: none !important; }
+
+/* Gradient text — manter legível no fundo claro */
+html.light .gradient-text-mixed {
+  background: linear-gradient(to right, #0891b2, #7c3aed, #ea580c) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* Botões neon — ajuste de contraste */
+html.light .btn-neon-cyan {
+  border-color: #0891b2 !important;
+  color: #0e7490 !important;
+  background-color: rgba(6,182,212,0.08) !important;
+}
+html.light .btn-neon-orange {
+  border-color: #ea580c !important;
+  color: #c2410c !important;
+  background-color: rgba(249,115,22,0.08) !important;
+}
+
+/* Cards de impacto na seção Problems */
+html.light .bg-green-500\/5  { background-color: rgba(34,197,94,0.1) !important; }
+html.light .border-green-500\/20 { border-color: rgba(22,163,74,0.4) !important; }
+html.light .text-green-300   { color: #15803d !important; }
+html.light .text-green-400   { color: #16a34a !important; }
+
+/* Botões sociais do hero (LinkedIn, WhatsApp, GitHub) */
+html.light .bg-blue-900\/30 {
+  background-color: rgba(59,130,246,0.12) !important;
+}
+html.light .border-blue-700\/50 {
+  border-color: rgba(37,99,235,0.5) !important;
+}
+html.light .text-blue-400 {
+  color: #1d4ed8 !important;
+}
+html.light .hover\:border-blue-500:hover { border-color: #3b82f6 !important; }
+html.light .hover\:bg-blue-900\/50:hover  { background-color: rgba(59,130,246,0.18) !important; }
+
+html.light .bg-green-900\/30 {
+  background-color: rgba(34,197,94,0.12) !important;
+}
+html.light .border-green-700\/50 {
+  border-color: rgba(22,163,74,0.5) !important;
+}
+html.light .text-green-400 {
+  color: #15803d !important;
+}
+html.light .hover\:border-green-500:hover { border-color: #22c55e !important; }
+html.light .hover\:bg-green-900\/50:hover  { background-color: rgba(34,197,94,0.18) !important; }
+
+/* GitHub button */
+html.light .bg-gray-800.border-gray-700 {
+  background-color: rgba(0,0,0,0.06) !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Badge e neon-line — ajuste */
+html.light .badge-cyan {
+  border-color: rgba(8,145,178,0.5) !important;
+  color: #0e7490 !important;
+  background-color: rgba(6,182,212,0.08) !important;
+}
+html.light .badge-orange {
+  border-color: rgba(234,88,12,0.5) !important;
+  color: #c2410c !important;
+  background-color: rgba(249,115,22,0.08) !important;
 }

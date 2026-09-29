@@ -12,6 +12,8 @@ import { TranslationService } from '../../services/translation.service';
 export class AboutComponent {
   private translationService = inject(TranslationService);
 
+  currentLanguage = this.translationService.currentLanguage;
+
   get t() {
     return this.translationService.translations();
   }

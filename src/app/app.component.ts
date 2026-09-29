@@ -8,6 +8,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationComponent } from './components/education/education.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfessionsComponent } from './components/professions/professions.component';
+import { ProblemsComponent } from './components/problems/problems.component';
 import { ThemeService } from './services/theme.service';
 import { TranslationService } from './services/translation.service';
 
@@ -23,13 +24,11 @@ import { TranslationService } from './services/translation.service';
     ProjectsComponent,
     EducationComponent,
     ProfessionsComponent,
+    ProblemsComponent,
     FooterComponent
   ],
   template: `
-    <div 
-      class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300"
-      [class.dark]="isDark()"
-    >
+    <div class="min-h-screen">
       <app-header></app-header>
       
       <main>
@@ -39,6 +38,7 @@ import { TranslationService } from './services/translation.service';
         <app-projects></app-projects>
         <app-education></app-education>
         <app-professions></app-professions>
+        <app-problems></app-problems>
       </main>
       
       <app-footer></app-footer>
@@ -47,7 +47,7 @@ import { TranslationService } from './services/translation.service';
       <button
         *ngIf="showScrollTop"
         (click)="scrollToTop()"
-        class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-primary-600 dark:bg-primary-700 text-white shadow-lg hover:bg-primary-700 dark:hover:bg-primary-800 transition-all duration-300 hover:scale-110"
+        class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-primary-600 text-white shadow-neon-sm hover:bg-primary-500 hover:shadow-neon-cyan transition-all duration-300 hover:scale-110"
         aria-label="Voltar ao topo"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
