@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fundo arredondado navy -->
+  <rect width="32" height="32" rx="8" fill="#0a0f1e"/>
+  <!-- Texto <VT/> em fonte mono estilo neon -->
+  <text x="16" y="22" font-family="monospace" font-size="11" font-weight="bold"
+        text-anchor="middle" fill="#06b6d4">&lt;VT/&gt;</text>
+</svg>
